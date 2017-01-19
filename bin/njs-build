@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var Builder = require('../lib/build').Builder;
+var fs = require('fs');
+var write = fs.writeFileSync;
+var path = require('path');
+var resolve = path.resolve;
+
+// Little hack to include `NODE_PATH=.`
+// require('node-path')(module, [resolve('.')]);
+
+var builder = new Builder();
+builder.build();

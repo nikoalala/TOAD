@@ -5,6 +5,7 @@
     "express": "*",
     "jade": "*",
     "stylus": "*",
+    "ftpd": "*",
 	"serve-favicon": "*",
 	"morgan": "*",
 	"body-parser": "*",

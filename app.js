@@ -12,6 +12,9 @@ var express = require('express')
   , logger = require('morgan')
   , methodOverride = require('method-override');
 
+//On intègre le ftp au lancement de l'application
+require('./ftp');
+
 var app = express();
 
 app.set('port', process.env.PORT || 3000);

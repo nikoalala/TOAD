@@ -9,8 +9,8 @@ window.onload = function() {
         var karting, piste, cursors, currentSpeed = 0;
 
         function preload () {
-            game.load.image('piste', './images/game/piste.png');
-            game.load.image('kart', './images/game/kart.png');
+            game.load.image('piste', '/toad/images/game/piste.png');
+            game.load.image('kart', '/toad/images/game/kart.png');
 
         }
 

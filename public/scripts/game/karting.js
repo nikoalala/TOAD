@@ -1,5 +1,5 @@
-var frottement = 0.025;
-var angleRotation = 2;
+var frottement = 0.0025;
+var angleRotation = 1.5;
 
 var Karting = function(game) {
     this.speed = 0;
@@ -25,17 +25,17 @@ var Karting = function(game) {
             this.sprite.angle += angleRotation;
         }
 
-
         if (cursors.up.isDown) {
-            if(this.forceMoteur < 0.15) {
-                this.forceMoteur += 0.01;
+            if(this.forceMoteur < 0) {
+                this.forceMoteur = 0.002;
+            } else if(this.forceMoteur < 0.01) {
+                this.forceMoteur += 0.002;
             }
         } else if (cursors.down.isDown) {
             this.forceMoteur = -0.02;
         } else {
             this.forceMoteur = 0.00;
         }
-
 
         var sina = Math.sin(this.sprite.rotation);
         var cosa = Math.cos(this.sprite.rotation);

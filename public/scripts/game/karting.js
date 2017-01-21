@@ -11,7 +11,7 @@ var Karting = function(game) {
     this.forceMoteur = 0;
 
     // Création du sprite avec l'image (préchargée), et init de ses valeurs
-    this.sprite = game.add.sprite(game.world.centerX, game.world.centerY, 'kart');
+    this.sprite = game.add.sprite(550, 914, 'kart');
     this.sprite.anchor.setTo(0.5, 0.5);
     game.physics.arcade.enable(this.sprite);
     this.sprite.body.collideWorldBounds = true;
@@ -19,12 +19,14 @@ var Karting = function(game) {
     var cursors = game.input.keyboard.createCursorKeys();
 
     this.update = function() {
+        // On tourne
         if (cursors.left.isDown) {
             this.sprite.angle -= angleRotation;
         } else if (cursors.right.isDown) {
             this.sprite.angle += angleRotation;
         }
 
+        // On accélère ou freine
         if (cursors.up.isDown) {
             if(this.forceMoteur < 0) {
                 this.forceMoteur = 0.002;

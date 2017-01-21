@@ -13,7 +13,7 @@ var express = require('express')
   , methodOverride = require('method-override');
 
 //On intègre le ftp au lancement de l'application
-require('./ftp');
+//require('./ftp');
 
 var app = express();
 

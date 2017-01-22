@@ -16,9 +16,9 @@ window.onload = function() {
     var karting, piste, currentSpeed = 0;
 
     // Préchargement des images
-    function preload() {    
-        game.load.image('piste', '/images/game/piste2.png');
-        game.load.image('kart', '/images/game/kart2.png');
+    function preload() {
+        game.load.image('piste', '/toad/images/game/piste2.png');
+        game.load.image('kart', '/toad/images/game/kart2.png');
 
     }
 
@@ -30,8 +30,10 @@ window.onload = function() {
 
         piste = game.add.tileSprite(0, 0, pisteSize[0], pisteSize[1], 'piste');
         piste.fixedToCamera = true;
+        var checkCollisionObj = new CheckCollisionPiste();
 
-        karting = Karting(game);
+        karting = Karting(game, checkCollisionObj);
+
 
         game.camera.follow(karting.sprite);
         game.camera.deadzone = new Phaser.Rectangle(350, 250, 150, 100);
@@ -40,8 +42,8 @@ window.onload = function() {
     }
 
     /**
-    * Fonction appelée avant chaque frame
-    */
+     * Fonction appelée avant chaque frame
+     */
     function update() {
         karting.update();
 
@@ -52,7 +54,72 @@ window.onload = function() {
     }
 
     function render() {
-
+        game.debug.text('Vitesse : ' + karting.speed, 32, 32);
     }
 
 };
+
+
+var CheckCollisionPiste = function() {
+    var that = this;
+    // Doit contenir toutes les infos de transparence de l'image
+    // transparancyData[x][y]
+    this.transparancyData = [];
+    var pisteTransparentSrc = '/toad/images/game/piste2_transparent.png';
+    var width = 877,
+        height = 1240;
+    var start = false;
+    var context = null;
+    var c = document.createElement("canvas");
+    if (c.getContext) {
+        context = c.getContext("2d");
+        if (context.getImageData) {
+            start = true;
+        }
+    }
+    if (start) {
+        var alphaData = [];
+        var loadImage = new Image();
+        loadImage.style.position = "absolute";
+        loadImage.style.left = "-10000px";
+        document.body.appendChild(loadImage);
+        loadImage.onload = function() {
+            c.width = width;
+            c.height = height;
+            c.style.width = width + "px";
+            c.style.height = height + "px";
+            context.drawImage(this, 0, 0, width, height);
+            try {
+                try {
+                    var imgDat = context.getImageData(0, 0, width, height);
+                } catch (e) {
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserRead");
+                    var imgDat = context.getImageData(0, 0, width, height);
+                }
+            } catch (e) {
+                throw new Error("unable to access image data: " + e);
+            }
+            var imgData = imgDat.data;
+            for (var i = 0, n = imgData.length; i < n; i += 4) {
+                var row = Math.floor((i / 4) / width);
+                var col = (i / 4) - (row * width);
+                if (!alphaData[row]) alphaData[row] = [];
+                alphaData[row][col] = imgData[i + 3] == 0 ? 0 : 1;
+            }
+            that.transparancyData = alphaData;
+
+            /*
+            console.log(alphaData);
+            var str = "";
+            for(var x = 0 ; x < 1240 ; x++) {
+                for(var y = 0 ; y < 877 ; y++) {
+                    str += alphaData[x][y];
+                }
+                str+="\n";
+            }
+            console.log(str);*/
+        };
+        loadImage.src = pisteTransparentSrc;
+    }
+    return this;
+}

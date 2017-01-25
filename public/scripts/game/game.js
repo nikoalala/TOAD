@@ -55,17 +55,30 @@ window.onload = function() {
 
     function render() {
         game.debug.text('Vitesse : ' + karting.speed, 32, 32);
+
+
+        if(karting.dateDebut) {
+            var time = dateDiff(karting.dateDebut, new Date());
+            game.debug.text('Temps : ' + time.min + ":"+ time.sec, 32, 72);
+        }
+        
+        if(karting.tempsTour) {
+            game.debug.text('Temps au tour : ' + karting.tempsTour.min + ":"+ karting.tempsTour.sec, 32, 92);
+        }
+
+        if(karting.checkpointIndex != undefined) {
+            game.debug.text('Checkpoint : ' + karting.checkpointIndex, 32, 52);
+        }
     }
 
 };
-
 
 var CheckCollisionPiste = function() {
     var that = this;
     // Doit contenir toutes les infos de transparence de l'image
     // transparancyData[x][y]
     this.transparancyData = [];
-    var pisteTransparentSrc = '/toad/images/game/piste2_transparent.png';
+    var pisteTransparentSrc = '/images/game/piste2_transparent.png';
     var width = 877,
         height = 1240;
     var start = false;

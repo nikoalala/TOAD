@@ -78,7 +78,7 @@ var CheckCollisionPiste = function() {
     // Doit contenir toutes les infos de transparence de l'image
     // transparancyData[x][y]
     this.transparancyData = [];
-    var pisteTransparentSrc = '/images/game/piste2_transparent.png';
+    var pisteTransparentSrc = '/toad/images/game/piste2_transparent.png';
     var width = 877,
         height = 1240;
     var start = false;

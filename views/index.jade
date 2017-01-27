@@ -4,3 +4,34 @@ block content
 	div.container
 		h1 Projet TOAD
 		p par la suicide SQUAD
+
+		table.table-striped(id="my-table")
+			thead
+				tr
+					td=headers[0]
+					td=headers[1]
+			tbody
+				each item in items
+					tr.success
+						td=item.firstName
+						td=item.lastName
+
+		|		<script>
+		|			$(document).ready(function(){
+		|				$('#my-table').dynatable({
+		|					dataset:{
+		|						perPageDefault: 3,
+		|						perPageOptions: [3,4,6,8]
+		|					},
+		|					features:{
+		|						search: false,
+		|						perPageSelect: false
+		|					},
+		|					inputs:{
+		|						paginationPrev: "<",
+		|						paginationNext: ">",
+		|						paginationGap: [1, 2, 3, 3, 2, 1]
+		|					}
+		|				});
+		|			});
+		|		</script>

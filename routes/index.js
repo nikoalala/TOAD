@@ -1,3 +1,5 @@
 exports.index = function(req, res){
-  res.render('index');
+  var items = [{ 'firstName': 'Jean', 'lastName': 'Neige'}, { 'firstName': 'Jhon', 'lastName': 'Snow'}]
+  var headers = ["First Name", "Last Name"];
+  res.render('index', {items: items, headers: headers});
 };

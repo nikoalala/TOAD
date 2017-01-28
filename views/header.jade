@@ -1,10 +1,7 @@
-div.navbar.navbar-default(role='navigation')
+div.navbar.navbar-default.navbar-fixed-top(role='navigation').shadowNavBar
 	div.container-fluid
-		.row
-		.col-sm-2
-			img(src="/toad/images/logo.png")
-		.col-sm-8.col-sm-offset-2
-			h1 NUMERICUP 2017 by Valeuriad
+		.row.laLigneVerte
+		.col-sm-11.col-sm-offset-1
 			div.navbar-header
 				button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
 					span.icon-bar
@@ -13,16 +10,18 @@ div.navbar.navbar-default(role='navigation')
 				a.navbar-brand(href="#")
 			div.collapse.navbar-collapse
 				ul.nav.navbar-nav
-					li.active
-						a(href="#") NumeriCup
 					li
-						a(href="#about") Règlement
-					li
-						a(href="#contact") Résultats
-					li
-						a(href="#contact") Sponsors
-						// Sharingbutton Facebook
+						img.logoNumericupHeadcer(src="/toad/images/header/numeriCupByValeuriad.png")
 				ul.nav.navbar-nav.navbar-right
+					li.active
+						a(href="#") THE NUMERICUP
+					li
+						a(href="#about") REGLEMENT
+					li
+						a(href="#contact") SPONSORS
+					li
+						a(href="#contact") RESULTATS
+						// Sharingbutton Facebook
 					a.resp-sharing-button__link(href='https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.numericup.com', target='_blank', aria-label='')
 						.resp-sharing-button.resp-sharing-button--facebook.resp-sharing-button--small
 							.resp-sharing-button__icon.resp-sharing-button__icon--solidcircle(aria-hidden='true')

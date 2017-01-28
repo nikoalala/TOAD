@@ -12,6 +12,36 @@
 	float: right;
 }
 
+.navbar-default .navbar-nav > .active > a {
+	text-decoration: underline;
+    color: #7fc249;
+}
+
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+  font-size: 16px;
+  font-weight: bold;
+  font-color: #272425;
+  font-style: bold;
+}
+
+
+.logoNumericupHeadcer {
+	padding-top: 12px;
+}
+
+.shadowNavBar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+.laLigneVerte {
+	border-top: 3px solid #7fc249;
+}
+
+
 .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block

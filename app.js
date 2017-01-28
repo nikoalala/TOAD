@@ -27,7 +27,7 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(require('stylus').middleware(__dirname + '/public'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/toad', express.static(path.join(__dirname, 'public')));
 
 if (app.get('env') == 'development') {
 	app.locals.pretty = true;

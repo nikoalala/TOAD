@@ -1,21 +1,17 @@
 extends layout
 
 block content
-	div.container
+	div.container-fluid
+		include video
 		h1 Projet TOAD
 		p par la suicide SQUAD
-
-		table.table-striped(id="my-table")
-			thead
-				tr
-					td=headers[0]
-					td=headers[1]
-			tbody
-				each item in items
-					tr.success
-						td=item.firstName
-						td=item.lastName
-
+		include presentation
+		include encarts
+		include reglement
+		include entraineToi
+		include partenaires
+		include resultats
+		
 		|		<script>
 		|			$(document).ready(function(){
 		|				$('#my-table').dynatable({

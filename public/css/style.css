@@ -1,0 +1,13 @@
+.videoPlayer {
+	/*position: absolute;
+    z-index: -1;*/
+}
+
+.kartingGame {
+	background-image: url(/images/game/background.png);
+	height: 929px;
+}
+
+.kartingGame #kartingGameCanvas {
+	float: right;
+}

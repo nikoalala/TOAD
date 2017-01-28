@@ -1,23 +1,23 @@
 window.onload = function() {
     // Taille du jeu et de la piste
-    var width = 800;
-    var height = 600;
+    var width = 950;
+    var height = 929;
     var pisteSize = [877, 1240];
     // var pisteSize = [1754, 2481];
 
     // Création du jeu avec les différentes fonctions necessaires.
-    var game = new Phaser.Game(width, height, Phaser.AUTO, '', {
+    var game = new Phaser.Game(width, height, Phaser.AUTO, 'kartingGameCanvas', {
         preload: preload,
         create: create,
         update: update,
         render: render
-    });
+    }, true);
 
     var karting, piste, currentSpeed = 0;
 
     // Préchargement des images
     function preload() {
-        game.load.image('piste', '/toad/images/game/piste2.png');
+        game.load.image('piste', '/toad/images/game/piste3.png');
         game.load.image('kart', '/toad/images/game/kart2.png');
 
     }

@@ -1,0 +1,10 @@
+table.table-striped(id="my-table")
+	thead
+		tr
+			td=headers[0]
+			td=headers[1]
+	tbody
+		each item in items
+			tr.success
+				td=item.firstName
+				td=item.lastName

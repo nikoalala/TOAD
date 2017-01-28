@@ -31,6 +31,21 @@
 	padding-top: 12px;
 }
 
+.partenaires img {
+	display: block;
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+}
+
+.valeuriadColor {
+	color: #7fc249;
+}
+
+.kartingDeNantesColor {
+	color: #10ace0;
+}
+
 .shadowNavBar {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;

@@ -33,7 +33,7 @@ if (app.get('env') == 'development') {
 	app.locals.pretty = true;
 }
 
-app.get('/', routes.index);
+app.get('/toad', routes.index);
 
 //Section pour lire un fichier csv et retourner un tableau d objet json
 //Ce n'est qu'un proto pour l'instant

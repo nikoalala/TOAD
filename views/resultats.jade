@@ -1,10 +1,15 @@
-table.table-striped(id="my-table")
-	thead
-		tr
-			td=headers[0]
-			td=headers[1]
-	tbody
-		each item in items
-			tr.success
-				td=item.firstName
-				td=item.lastName
+a(id="resultats")
+	br
+	br
+	div.page-header.resultatsHeader
+		h1 LA NUMERICUP, LES RESULTATS
+	table.table-striped(id="my-table")
+		thead
+			tr
+				td=headers[0]
+				td=headers[1]
+		tbody
+			each item in items
+				tr.success
+					td=item.firstName
+					td=item.lastName

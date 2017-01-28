@@ -41,6 +41,20 @@
 	border-top: 3px solid #7fc249;
 }
 
+.resultatsHeader{
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: #95cc57;
+}
+
+.resultatsHeader h1{
+	color: #FFF;
+}
+
+.resultatsHeader h2{
+	color: #000;
+}
 
 .resp-sharing-button__link,
 .resp-sharing-button__icon {

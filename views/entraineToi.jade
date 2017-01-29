@@ -1,2 +1,20 @@
-div.kartingGame
-	div(id="kartingGameCanvas")
+block entraineToi
+	div.kartingGame
+		div(id="kartingGameExplications").pull-left.col-md-offset-1
+			h1.kgTitre.text-uppercase Entraîne-toi !
+			div.kgTexte
+				p Nous avons reproduit ici pour toi le circuit du karting de Nantes !
+				p Utilise les touches directionnelles de ton clavier pour diriger ton bolide et tente de battre le record !
+				p 
+					span.glyphicon.glyphicon-arrow-up
+					|  Accélère le kart
+				p 
+					span.glyphicon.glyphicon-arrow-down
+					|  Freine le kart
+				p 
+					span.glyphicon.glyphicon-arrow-left
+					|  Tourne le kart vers la gauche
+				p 
+					span.glyphicon.glyphicon-arrow-right
+					|  Tourne le kart vers la droite
+		div(id="kartingGameCanvas").pull-right

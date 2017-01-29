@@ -8,9 +8,15 @@
 	height: 929px;
 }
 
-.kartingGame #kartingGameCanvas {
-	float: right;
+.kgTitre {
+  color: #7FC249;
 }
+
+.kgTexte {
+  color: white;
+  font-size: larger;
+}
+
 
 .navbar-default .navbar-nav > .active > a {
 	text-decoration: underline;

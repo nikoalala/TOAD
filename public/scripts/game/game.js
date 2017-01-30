@@ -1,12 +1,12 @@
 window.onload = function() {
     // Taille du jeu et de la piste
-    var width = 950;
-    var height = 929;
+    var windowSize = getBrowserDimensions();
+    var offset = 100;
     var pisteSize = [877, 1240];
     // var pisteSize = [1754, 2481];
 
     // Création du jeu avec les différentes fonctions necessaires.
-    var game = new Phaser.Game(width, height, Phaser.AUTO, 'kartingGameCanvas', {
+    var game = new Phaser.Game(windowSize.width/2, windowSize.height-offset, Phaser.AUTO, 'kartingGameCanvas', {
         preload: preload,
         create: create,
         update: update,
@@ -36,7 +36,7 @@ window.onload = function() {
 
 
         game.camera.follow(karting.sprite);
-        game.camera.deadzone = new Phaser.Rectangle(350, 250, 150, 100);
+        //game.camera.deadzone = new Phaser.Rectangle(350, 250, 150, 100);
         game.camera.focusOnXY(0, 0);
 
     }

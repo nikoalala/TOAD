@@ -62,3 +62,10 @@ function checkLineIntersection(line1StartX, line1StartY, line1EndX, line1EndY, l
     // if line1 and line2 are segments, they intersect if both of the above are true
     return (result.onLine1 && result.onLine2);
 }
+
+function getBrowserDimensions() {
+  return {
+    width: (window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth),
+    height: (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)
+  };
+}

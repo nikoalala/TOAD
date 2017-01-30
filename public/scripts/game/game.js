@@ -1,10 +1,15 @@
 window.onload = function() {
     // Taille du jeu et de la piste
-    var windowSize = getBrowserDimensions();
+    
     var offset = 100;
     var pisteSize = [877, 1240];
     // var pisteSize = [1754, 2481];
 
+    var windowSize = getBrowserDimensions();
+    if(windowSize.height > 900) {
+            windowSize.height = 900;
+    }
+    
     // Création du jeu avec les différentes fonctions necessaires.
     var game = new Phaser.Game(windowSize.width/2, windowSize.height-offset, Phaser.AUTO, 'kartingGameCanvas', {
         preload: preload,
@@ -39,6 +44,7 @@ window.onload = function() {
         //game.camera.deadzone = new Phaser.Rectangle(350, 250, 150, 100);
         game.camera.focusOnXY(0, 0);
 
+        activateWindowSizeCheck(game);
     }
 
     /**
@@ -135,4 +141,18 @@ var CheckCollisionPiste = function() {
         loadImage.src = pisteTransparentSrc;
     }
     return this;
+}
+
+
+/**
+* Gestion du changement de traille de la fenêtre
+*/
+function activateWindowSizeCheck(game) {
+    $( window ).resize(function() {
+        var windowSize = getBrowserDimensions();
+        if(windowSize.height > 900) {
+            windowSize.height = 900;
+        }
+        game.scale.setGameSize(windowSize.width/2, windowSize.height);
+    });
 }

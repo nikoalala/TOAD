@@ -4,26 +4,3 @@ a(id="resultats")
 div.page-header.resultatsHeader
 	h1 LA NUMERICUP, LES RESULTATS
 div#resultats
-	div(style="border-style: dashed")
-		p(align="center")
-			input(type="radio", name="resultats", checked="")
-			| Classement par société
-			input(type="radio", name="resultats")
-			|	Classement induviduel
-			input(type="radio", name="resultats")
-			|	Classement final
-		table.table.table-striped.table-bordered.table-hover.table-responsive#my-table(align="center")
-			thead.valeuriadColor
-				tr
-					each header in headers
-						td=header
-			tbody
-				each item in items
-					tr
-						td=item.classement
-						td=item.societe
-						td=item.chronoCumule
-						td=item.pilote1Pseudo
-						td=item.pilote1Chrono
-						td=item.pilote2Pseudo
-						td=item.pilote2Chrono

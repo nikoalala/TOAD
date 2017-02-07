@@ -11,28 +11,3 @@ block content
 		include entraineToi
 		include partenaires
 		include resultats
-
-		|		<script>
-		|			$(document).ready(function(){
-		|				$('#my-table').dynatable({
-		|					dataset:{
-		|						perPageDefault: 3,
-		|						perPageOptions: [3,4,6,8]
-		|					},
-		|					features:{
-		|						search: false,
-		|						perPageSelect: false
-		|					},
-		|					inputs:{
-		|						paginationPrev: "<",
-		|						paginationNext: ">",
-		|						paginationGap: [1, 2, 3, 3, 2, 1]
-		|					},
-		|					readers: {
-		|						'classement': function(el, record) {
-		|							return Number(el.innerHTML) || 0;
-		|						}
-		|					}
-		|				});
-		|			});
-		|		</script>

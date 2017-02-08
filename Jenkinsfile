@@ -1,5 +1,8 @@
 node {
-	
+
+	stage 'Stop Server'
+	sh 'sudo killall node'
+
 	stage 'Checkout'
 	checkout scm
 

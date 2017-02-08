@@ -1,4 +1,27 @@
-div.videoPlayer
-	|<iframe id="videoPlayer" frameborder="0" width="1920" height="1000"
-	|src="https://www.youtube.com/embed/cfX4Z2W6vX8?autoplay=0&controls=0&disablekb=1&fs=0&iv_load_policy=3&loop=1&modestbranding=1&showinfo=0">
-	|</iframe>
+div(id="background-video").background-video
+	img(src="/toad/images/video/backgroundKart.jpg").placeholder-image
+	
+	div(id="textSurVideo").textSurVideo
+		p 
+			.line.text-uppercase
+				h1(style='color:#7FC249;') The numericup,
+			.line.text-uppercase
+				h1(style='color:#00A8DD;') L'it nantais qui kartonne !
+			.line
+				h3(style='color:white;') En 2017, venez vous mesurer et d&eacute;fier
+			.line
+				h3(style='color:white;') les autres acteurs du num&eacute;rique &aacute; Nantes
+
+	div(id="reseauSociaux").reseauSociaux.col-md-12
+		div(id="valeuriad").valeuriad.col-md-12
+			a(href='http://www.valeuriad.fr')
+				img(src="/toad/images/video/logoValeuriad.png")
+		div(id="kart").kart.col-md-12
+			a(href='http://www.karting-de-nantes.fr/fr/')
+				img(src="/toad/images/video/logoKart.png")
+		div(id="facebook").facebook.col-md-12
+			a(href='http://www.facebook.com')
+				img(src="/toad/images/video/logoFacebook.png")
+		div(id="twitter").twitter.col-md-12
+			a(href='http://www.twitter.fr')
+				img(src="/toad/images/video/logoTwitter.png")

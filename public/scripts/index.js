@@ -32,10 +32,10 @@ $( document ).ready(function() {
  	var kartingImage = new Image();
 	kartingImage.style.position = "fixed";
 	kartingImage.style.left = "0px";
-	kartingImage.style.top = "4%";
+	kartingImage.style.top = "35px";
 	kartingImage.style["z-index"] = 1031;
 	document.body.appendChild(kartingImage);
-	kartingImage.src = "/toad/images/header/kartHeaderNew.png";
+	kartingImage.src = "/toad/images/header/kart_head.png";
 
     $( window ).scroll(function() {
     	var windowHeight = Math.max($(document).height(), $(window).height())-getBrowserDimensions().height-$("#headerBar").height();

@@ -21,7 +21,7 @@ window.onload = function() {
     // Préchargement des images
     function preload() {
         game.load.image('piste', '/toad/images/game/piste3.png');
-        game.load.image('kart', '/toad/images/game/kart2.png');
+        game.load.image('kart', '/toad/images/game/karting_vert.png');
 
     }
 

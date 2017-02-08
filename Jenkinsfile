@@ -1,7 +1,7 @@
 node {
 
 	stage 'Stop Server'
-	sh 'sudo killall node'
+	sh 'killall node || true'
 
 	stage 'Checkout'
 	checkout scm
@@ -11,11 +11,14 @@ node {
 
 	stage 'Serve'
 	withEnv(["PATH+NODE=${tool name: 'node'}"]) {
-    	sh 'node app.js'
+    	sh 'nohup node app.js &'
   	}
 
-	stage 'Kill'
-	input 'Kill?'
-	sh 'sudo killall node'
-	
 }
+timeout(time: 1, unit: 'HOURS') {
+    stage 'Kill'
+	input 'Kill?'
+	sh 'killall node'
+}
+
+

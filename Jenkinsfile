@@ -7,7 +7,9 @@ node {
 	sh 'npm install'
 
 	stage 'Serve'
-	sh 'node app.js'
+	withEnv(["PATH+NODE=${tool name: 'node'}"]) {
+    	sh 'node app.js'
+  	}
 
 	stage 'Kill'
 	input 'Kill?'

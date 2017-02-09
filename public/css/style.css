@@ -351,8 +351,14 @@ background-color: #FF6600
     z-index: 4;
     text-align: center;
     padding-top : 12%;
-    
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
+
+
 
 .textSurVideo h1{
 	line-height:45px;
@@ -382,6 +388,10 @@ background-color: #FF6600
     text-align: right;
     position : absolute;
     padding-top : 30px;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
 }
 
 .twitter, .facebook, .kart, .valeuriad{

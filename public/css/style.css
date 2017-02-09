@@ -47,21 +47,29 @@
 	color: #10ace0;
 }
 
-.shadowNavBar {
-    -webkit-box-shadow: 0 8px 6px -6px #999;
-    -moz-box-shadow: 0 8px 6px -6px #999;
-    box-shadow: 0 8px 6px -6px #999;
-}
-
 .laLigneGrise {
-	border-top: 50px solid #777676;
+	border-top: 25px solid #777676;
+	width: 100%;
+	margin-top : 12px;
 }
 
-.laLigneRougeBlanc {
+#headerGrayBarKarting{
+	margin-left : 0px;
+	z-index : 5;
+	position : fixed;
+	display: none;
+	
+}
+
+.laLigneBleuBlanc {
     height: 8px;
-    background-image: url(/toad/images/header/bandeRougeBlanche.png);
+    background-image: url(/toad/images/header/bandeBleuBlanche.png);
     background-repeat: repeat-x;
 
+}
+
+#barNavigation{
+	margin-left : 15%;
 }
 
 .resultatsHeader{
@@ -274,7 +282,7 @@ background-color: #FF6600
 
 .presentation {
     margin: 0 auto;
-    height: 1858px;
+    height: 1949px;
 }
 
 #presentationSimple{
@@ -386,8 +394,8 @@ background-color: #FF6600
 .reseauSociaux{
     z-index: 5;
     text-align: right;
-    position : absolute;
-    padding-top : 30px;
+    position : fixed;
+    padding-top : 100px;
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
@@ -444,7 +452,19 @@ a:hover{
   position: absolute;
 }
 
-#headerBar{
-	opacity: 0.2;
+.headerBar{
 	background-color : transparent;
+}
+
+.barNavigation a{
+	color : white;
+}
+
+.headerBarBlanc{
+	background-color : white;
+	opacity: 0.8;
+}
+
+.barNavigationNoir a{
+	color : black;
 }

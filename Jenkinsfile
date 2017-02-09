@@ -21,7 +21,7 @@ node {
 		withEnv(["PATH+NODE=${tool name: 'node'}"]) {
 	    	sh 'nohup node app.js &'
 	  	}
-    	slackSend color: 'good', message: 'Build Ok & Serveur Up (<a href="${env.BUILD_URL}">#${env.BUILD_NUMBER}</a>)'
+    	slackSend color: 'good', message: "Build Ok & Serveur Up -> ${env.BUILD_URL}"
 	} catch (e) {
     	slackSend color: 'warning', message: 'Build Ok mais serveur down :/'
     	throw e

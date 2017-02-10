@@ -72,6 +72,10 @@
 	margin-left : 15%;
 }
 
+#resultats {
+  height:500px;
+}
+
 .resultatsHeader{
 	text-align: center;
 	padding-top: 15px;

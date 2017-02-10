@@ -87,6 +87,21 @@
 	color: #000;
 }
 
+#ancreReglement {
+  background-color: black;
+  height: 570px;
+  text-align: center;
+}
+
+.h1white {
+  padding-top: 100px;
+  color: white;
+}
+
+#ancreReglement h1 .h1gray {
+  color: #231f20;
+}
+
 .resp-sharing-button__link,
 .resp-sharing-button__icon {
   display: inline-block

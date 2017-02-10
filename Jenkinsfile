@@ -16,15 +16,16 @@ node {
     throw e
 	}
 
-	try {
-		stage 'Serve'
-		withEnv(["PATH+NODE=${tool name: 'node'}"]) {
-	    	sh 'nohup node app.js &'
-	  	}
-	} catch (e) {
-    	slackSend color: 'warning', message: 'Build Ok mais serveur down :/'
-    	throw e
+	stage 'Serve'
+	withEnv(["PATH+NODE=${tool name: 'node'}"]) {
+	    sh 'nohup node app.js &'
 	}
+	  	
+	def toadAddress = env.JENKINS_URL.replace('jenkins','toad')
+    def statusCode = sh returnStdout: true, script: "curl -s -o /dev/null -I -w '%{http_code}' "+toadAddress 
+    if (!statusCode.equals("200")){
+        slackSend color: 'warning', message: 'Le serveur ne se lance pas correctement -> '+toadAddress
+    }
 }
 timeout(time: 1, unit: 'HOURS') {
     stage 'Kill'

@@ -7,6 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , fs = require('fs')
   , http = require('http')
+  , request = require('request')
+  , jsdom = require('jsdom')
   , path = require('path')
   , bodyParser = require('body-parser')
   , favicon = require('serve-favicon')
@@ -18,6 +20,17 @@ var express = require('express')
 //require('./ftp');
 
 var app = express();
+
+var getJs = function(script){
+  var fileName = script.replace("javascript/", "");
+  request.get("https://www.apex-timing.com/gokarts/"+script, function(error, response, body){
+    fs.writeFile(fileName, body, function(err){
+      if(err){
+        console.log(err);
+      }
+    });
+  })
+};
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -35,26 +48,39 @@ if (app.get('env') == 'development') {
 
 app.get('/toad', routes.index);
 
-//Section pour lire un fichier csv et retourner un tableau d objet json
-//Ce n'est qu'un proto pour l'instant
-//Ca va etre adapté soon pour correspondre à l'article B du fichier csv passé par APEX
-app.get('/getJsonData', function(req, res) {
-  var jsonTab = [];
-  fs.readFile(__dirname + '/apex/test.csv', 'utf8', function(err, data){
-    var jsonData = papaParse.parse(data, {dynamicTyping: true, skipEmptyLines: true, delimiter: ";" }).data;
-    var jsonObject = function(firstName, lastName){
-      this.firstName = firstName;
-      this.lastName = lastName;
-    }
-    console.log('jsonData : '+jsonData);
-    for (data of jsonData) {
+app.get('/resultatsApex', function(req, res){
+  request.get("https://www.apex-timing.com/gokarts/results.php?center=54&leaderboard=7", function(error, response, body){
 
-      jsonTab.push(new jsonObject(data[0], data[1]));
-    };
-    res.end(JSON.stringify(jsonTab));
-  });
+    jsdom.env(
+      body,
+      function(err, window){
+        global.window = window;
+        global.document = window.document;
+        var scripts = document.querySelectorAll('script');
+        for(var i = 0; i < scripts.length; i++){
+          var script = scripts[i].src;
+          if(script !== ""){
+            var url = "https://www.apex-timing.com/gokarts/" + script;
+            getJs(script);
+            //Appel fonction pour recuperer script js unitairement
+            console.log(script);
+          }
+        }
+      }
+    );
+    var regExpSrc = new RegExp("src=\"", "g");
+    body = body.replace(regExpSrc, "src=\"https://www.apex-timing.com/gokarts/");
+    var regExpMedia = new RegExp("link href=\"", "g");
+    body = body.replace(regExpMedia, "link href=\"https://www.apex-timing.com/gokarts/");
+    fs.writeFile("body.html", body, "utf-8", function(err){
+      if(err){
+        return console.log(err);
+      }
+    });
+    //console.log(body);
+    res.end(body);
+  })
 });
-
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

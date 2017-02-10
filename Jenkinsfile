@@ -32,7 +32,9 @@ node {
 timeout(time: 1, unit: 'HOURS') {
     stage 'Kill'
 	input 'Kill?'
-	sh 'killall node'
+	node {
+		sh 'killall node'
+	}
 }
 
 

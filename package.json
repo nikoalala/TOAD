@@ -4,6 +4,7 @@
   "dependencies": {
     "body-parser": "*",
     "express": "*",
+    "compression": "*",
     "ftpd": "*",
     "jade": "*",
     "method-override": "*",

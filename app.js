@@ -8,6 +8,7 @@ var express = require('express')
   , fs = require('fs')
   , http = require('http')
   , request = require('request')
+  , compress = require('compression')
   , jsdom = require('jsdom')
   , path = require('path')
   , bodyParser = require('body-parser')
@@ -21,6 +22,8 @@ var express = require('express')
 
 var app = express();
 
+var oneDay = 86400000;
+
 var getJs = function(script){
   var fileName = script.replace("javascript/", "");
   request.get("https://www.apex-timing.com/gokarts/"+script, function(error, response, body){
@@ -32,6 +35,8 @@ var getJs = function(script){
   })
 };
 
+
+
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -39,8 +44,10 @@ app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+app.use(compress());
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use('/toad', express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public', { maxAge: oneDay }));
 
 if (app.get('env') == 'development') {
 	app.locals.pretty = true;

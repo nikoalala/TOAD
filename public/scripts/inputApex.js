@@ -1,12 +1,14 @@
-$.ajax({
-  url: 'http://www.apex-timing.com/gokarts/results.php?center=54&challenge=1',
-  type: 'GET',
-  headers: {
-    'Access-Control-Allow-Origin': 'http://localhost:3000'
-  },
-  datatype: "text/html",
-  success: function(data){
-    var divResults = $(data).find('#title').html;
-    $('#resultats').append(divResults);
+$(".top_previous").attr('onClick', 'paginer("first")');
+$(".previous").attr('onClick', 'paginer("previous")');
+$(".following").attr('onClick', 'paginer("next")');
+$(".last_following").attr('onClick', 'paginer("y")');
+
+function paginer(string){
+  var param = string;
+  //On verifie ce qui nous as ete envoye
+  if(["first", "previous", "next", "last"].indexOf(param) >= 0){
+    alert("Data ok !");
+  } else {
+    alert("Mauvaise donnees en entree..");
   }
-});
+}

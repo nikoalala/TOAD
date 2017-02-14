@@ -24,9 +24,16 @@ var app = express();
 
 var oneDay = 86400000;
 
+//Methode pour recuperer un fichier JS depuis son URL complete et
+// modifie les eventuels champs url: pour pointer sur la bonne url
 var getJs = function(script){
   var fileName = script.replace("javascript/", "");
   request.get("https://www.apex-timing.com/gokarts/"+script, function(error, response, body){
+    if(~fileName.indexOf("?")){
+      fileName = fileName.substr(0, fileName.indexOf("?"));
+    }
+    fileName = "public/scripts/apex/"+ fileName;
+    body = body.replace("url: \"", "url: \"https://www.apex-timing.com/gokarts/");
     fs.writeFile(fileName, body, function(err){
       if(err){
         console.log(err);
@@ -56,8 +63,24 @@ if (app.get('env') == 'development') {
 app.get('/toad', routes.index);
 
 app.get('/resultatsApex', function(req, res){
-  request.get("https://www.apex-timing.com/gokarts/results.php?center=54&leaderboard=7", function(error, response, body){
-
+  var urlSaisie = req.query;
+  if(typeof urlSaisie.start != 'undefined'){
+    console.log("Param start présent !");
+    console.log("Start : "+urlSaisie.start);
+    var start = "&start="+urlSaisie.start;
+  } else {
+    console.log("Param start non présent...");
+    var start = "";
+  }
+  if(typeof urlSaisie.count != 'undefined'){
+    console.log("Param count présent !");
+    console.log("count : "+urlSaisie.count);
+    var count = "&count="+urlSaisie.count;
+  } else {
+    console.log("Param count non présent...");
+    var count = "";
+  }
+  request.get("https://www.apex-timing.com/gokarts/results.php?center=54&leaderboard=7"+start+count, function(error, response, body){
     jsdom.env(
       body,
       function(err, window){
@@ -68,17 +91,26 @@ app.get('/resultatsApex', function(req, res){
           var script = scripts[i].src;
           if(script !== ""){
             var url = "https://www.apex-timing.com/gokarts/" + script;
-            getJs(script);
             //Appel fonction pour recuperer script js unitairement
-            console.log(script);
+            getJs(script);
           }
         }
       }
     );
-    var regExpSrc = new RegExp("src=\"", "g");
-    body = body.replace(regExpSrc, "src=\"https://www.apex-timing.com/gokarts/");
-    var regExpMedia = new RegExp("link href=\"", "g");
-    body = body.replace(regExpMedia, "link href=\"https://www.apex-timing.com/gokarts/");
+    // Modification des src javascript pour pointer sur les sources locales
+    var regExpJs = new RegExp("src=\"javascript", "g");
+    body = body.replace(regExpJs, "src=\"toad/scripts/apex");
+    // Modification des src media/images/href
+    var regExpMedia = new RegExp("src=\"media", "g");
+    body = body.replace(regExpMedia, "src=\"https://www.apex-timing.com/gokarts/media");
+    var regExpImages = new RegExp("src=\"images", "g");
+    body = body.replace(regExpImages, "src=\"https://www.apex-timing.com/gokarts/images");
+    var regExpHref = new RegExp("link href=\"", "g");
+    body = body.replace(regExpHref, "link href=\"https://www.apex-timing.com/gokarts/");
+
+    body = body.replace('</body>', '<script type="text/javascript" src="toad/scripts/inputApex.js" ></script></body>');
+
+    // Ecriture du ody récupéré (pas vraiment utile pour le moment...)
     fs.writeFile("body.html", body, "utf-8", function(err){
       if(err){
         return console.log(err);

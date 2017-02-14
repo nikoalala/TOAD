@@ -18,7 +18,9 @@ $( document ).ready(function() {
 		if (videoPasse) {
 			
 			var player = $('#background-video').data('ytPlayer').player;
-			player.pauseVideo();
+			if(player && player.pauseVideo) {
+        player.pauseVideo();
+      }
 			
 			//On ajoute le kart
 			document.body.appendChild(kartingImage);
@@ -40,7 +42,9 @@ $( document ).ready(function() {
 		}else{
     	
 			var player = $('#background-video').data('ytPlayer').player;
-			player.playVideo();
+      if(player && player.playVideo) {
+      	player.playVideo();
+      }
 			
 	    	//On change l'icone car nous sommes sur la video
 	    	document.getElementById('logoNumericup').src='/toad/images/header/logo_numericup_top_medium.png';
@@ -105,7 +109,7 @@ $( document ).ready(function() {
     	
     	var palier1 = $("#background-video").height() + $("#ancrePresentation").height();
     	var palier2 = palier1 + $(".kartingGame").height();
-    	var palier3 = palier2 +  $("#partenaires").height() ;
+    	var palier3 = palier2 +  $(".partenaires").height() ;
     	
     	var windowHeight = Math.max($(document).height(), $(window).height())-getBrowserDimensions().height+$("#headerBar").height();
     	var windowWidth = getBrowserDimensions().width;

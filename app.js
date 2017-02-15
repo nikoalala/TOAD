@@ -64,23 +64,15 @@ app.get('/toad', routes.index);
 
 app.get('/resultatsApex', function(req, res){
   var urlSaisie = req.query;
-  if(typeof urlSaisie.start != 'undefined'){
-    console.log("Param start présent !");
-    console.log("Start : "+urlSaisie.start);
-    var start = "&start="+urlSaisie.start;
-  } else {
-    console.log("Param start non présent...");
-    var start = "";
-  }
-  if(typeof urlSaisie.count != 'undefined'){
-    console.log("Param count présent !");
-    console.log("count : "+urlSaisie.count);
-    var count = "&count="+urlSaisie.count;
-  } else {
-    console.log("Param count non présent...");
-    var count = "";
-  }
-  request.get("https://www.apex-timing.com/gokarts/results.php?center=54&leaderboard=7"+start+count, function(error, response, body){
+  var params = "";
+  for(var param in urlSaisie){
+    console.log(param, urlSaisie[param]);
+    params += "&"+param+"="+urlSaisie[param];
+  };
+  // /!\ Penser a changer le challenge pour correspondre aux resultats de la CUP
+  // Pour l'instant le leaderboard7 sert uniquement a afficher des resultats
+  // Et montrer que la pagination / filtre fonctionne
+  request.get("https://www.apex-timing.com/gokarts/results.php?center=54&leaderboard=7"+params, function(error, response, body){
     jsdom.env(
       body,
       function(err, window){
@@ -107,16 +99,25 @@ app.get('/resultatsApex', function(req, res){
     body = body.replace(regExpImages, "src=\"https://www.apex-timing.com/gokarts/images");
     var regExpHref = new RegExp("link href=\"", "g");
     body = body.replace(regExpHref, "link href=\"https://www.apex-timing.com/gokarts/");
-
+    //On remplace l'appel a la fonction Top_Result par notre fonction pour gerer les filtres eventuels du tableau
+    var regExpTopResult = new RegExp("Top_Results()", "g");
+    body = body.replace(regExpTopResult, "filtre");
+    var regExpSearchResult = new RegExp("Search_Results()", "g");
+    body = body.replace(regExpSearchResult, "filtre");
+    //On gere ici le lien vers la fiche du membre selectionne
+    var regExpMember = new RegExp("location.href='member.php\?", "g");
+    body = body.replace(regExpMember, "location.href=\'https://www.apex-timing.com/gokarts/member.php");
+    //On injecte notre script js pour gerer la pagination et les filtres
     body = body.replace('</body>', '<script type="text/javascript" src="toad/scripts/inputApex.js" ></script></body>');
 
-    // Ecriture du ody récupéré (pas vraiment utile pour le moment...)
+    // Ecriture du body récupéré (pas vraiment utile pour le moment...)
     fs.writeFile("body.html", body, "utf-8", function(err){
       if(err){
         return console.log(err);
       }
     });
     //console.log(body);
+
     res.end(body);
   })
 });

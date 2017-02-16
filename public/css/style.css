@@ -348,17 +348,11 @@ background-color: #FF6600
   color: #7FC249;
   text-align: center;
   font-size : 30px;
-  margin-top : 190px;
 }
 
 .presentationSousTitre {
   text-align: center;
   padding-bottom : 50px;
-}
-
-.presentation {
-    margin: 0 auto;
-    height: 1949px;
 }
 
 #presentationSimple{
@@ -405,14 +399,9 @@ background-color: #FF6600
 	margin-top : -12px;
 }
 
-#premierePartiePresentation{
-	min-height: 929px;
-}
-
-#deuxiemePartiePresentation{
-	min-height: 929px;
+#deuxiemePartiePresentation {
 	background-color: #EFEFEF;
-	margin-top : 90px;
+  padding-bottom: 20px;
 }
 
 #plPourquoi, #plPourQui, #plOuEtQuand, #dlDollar, #dlCoupe, #dlInscription {
@@ -429,7 +418,7 @@ background-color: #FF6600
 	margin-top : 20px;
 }
 
-.textSurVideo{
+.textSurVideo{  
 	width : 100%;
 	position: absolute;
     z-index: 4;
@@ -473,18 +462,28 @@ background-color: #FF6600
 }
 
 .reseauSociaux{
-    z-index: 5;
-    text-align: right;
-    position : fixed;
-    padding-top : 100px;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
+  z-index: 100;
+  text-align: right;
+  position : fixed;
+  padding-right: 20px;
+  padding-top : 100px;
+  right: 0px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
-.twitter, .facebook, .kart, .valeuriad{
+.reseauSociaux img {
+  width: 50px;
 	margin-bottom : 5px;
+  -webkit-box-shadow: 5px 5px 8px 0px rgba(50, 50, 50, 0.32);
+  -moz-box-shadow:    5px 5px 8px 0px rgba(50, 50, 50, 0.32);
+  box-shadow:         5px 5px 8px 0px rgba(50, 50, 50, 0.32)
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=black, Direction=134, Strength=2);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 .loaded .ytplayer-container {

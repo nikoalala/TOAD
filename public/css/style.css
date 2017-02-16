@@ -97,6 +97,11 @@
   text-align: center;
 }
 
+#ancrePartenaires p {
+  padding-right: 150px;
+  padding-bottom: 30px;
+}
+
 #ancreReglement {
   background: #7FC249;
   background: -moz-linear-gradient(-45deg, #7FC249 44%, #0EA8DF 58%);
@@ -122,6 +127,12 @@
   -moz-box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
   box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
 }
+
+hr.vertical
+{
+   width: 0px;
+   height: 100%; /* or height in PX */
+} 
 
 .reglement p {
   font-weight: bold;

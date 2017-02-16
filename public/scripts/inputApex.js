@@ -3,7 +3,11 @@ $(".previous").attr('onClick', 'paginer("previous")');
 $(".following").attr('onClick', 'paginer("next")');
 $(".last_following").attr('onClick', 'paginer("last")');
 $(".member").attr('style', 'pointer-events: none; cursor: default;');
+// Permet de retirer la partie de navigation vers les autres classements du karting
 $("header").remove();
+// Cache les filtres disponibles pour les resultats
+// Etant donne que la numericup s'adresse a tous, on ne fait pas de distingo entre H/F etc
+$(".filters_menu").attr('hidden', 'true');
 
 // Fonction pour recuperer les params de l'url
 function getUrlParameter(name) {

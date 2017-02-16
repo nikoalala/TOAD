@@ -96,18 +96,34 @@
 }
 
 #ancreReglement {
-  background-color: black;
-  height: 570px;
+  background: #7FC249;
+  background: -moz-linear-gradient(-45deg, #7FC249 44%, #0EA8DF 58%);
+  background: -webkit-linear-gradient(-45deg, #7FC249 44%,#0EA8DF 58%);
+  background: linear-gradient(135deg, #7FC249 44%,#0EA8DF 58%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7FC249', endColorstr='#0EA8DF',GradientType=1 );
+  height: 280px;
   text-align: center;
+  padding: 10px;
 }
 
 .h1white {
-  padding-top: 100px;
+  padding-top: 25px;
   color: white;
 }
 
 #ancreReglement h1 .h1gray {
-  color: #231f20;
+  color: #231F20;
+}
+
+#ancreReglement img {
+  -webkit-box-shadow: 2px 2px 20px 7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 20px 7px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 20px 7px rgba(0,0,0,0.75);
+}
+
+.reglement p {
+  font-weight: bold;
+  font-size: 18px;
 }
 
 .resp-sharing-button__link,

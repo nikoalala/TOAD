@@ -110,14 +110,6 @@ app.get('/resultatsApex', function(req, res){
     //On injecte notre script js pour gerer la pagination et les filtres
     body = body.replace('</body>', '<script type="text/javascript" src="toad/scripts/inputApex.js" ></script></body>');
 
-    // Ecriture du body récupéré (pas vraiment utile pour le moment...)
-    fs.writeFile("body.html", body, "utf-8", function(err){
-      if(err){
-        return console.log(err);
-      }
-    });
-    //console.log(body);
-
     res.end(body);
   })
 });

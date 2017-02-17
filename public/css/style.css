@@ -137,9 +137,7 @@
   background: -webkit-linear-gradient(-45deg, #7FC249 44%,#0EA8DF 58%);
   background: linear-gradient(135deg, #7FC249 44%,#0EA8DF 58%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7FC249', endColorstr='#0EA8DF',GradientType=1 );
-  height: 280px;
-  text-align: center;
-  padding: 10px;
+  padding-bottom: 40px;
 }
 
 .h1white {
@@ -155,6 +153,10 @@
   -webkit-box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
   -moz-box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
   box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
+}
+
+#ancreReglement a {
+  text-align: center;
 }
 
 hr.vertical

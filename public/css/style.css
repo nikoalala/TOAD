@@ -39,6 +39,11 @@
     padding: 10px;
 }
 
+.partner {
+  padding-left: 10%;
+  padding-right: 10%
+}
+
 .valeuriadColor {
 	color: #7fc249;
 }
@@ -114,7 +119,7 @@
   height: 180px;
 }
 
-#ancrePartenaires .row [class*='col-sm-6']:not(:last-child):after {
+#ancrePartenaires .row [class*='col-md-6']:not(:last-child):after {
   background: #e0e0e0;
   width: 1px;
   content: "";
@@ -164,7 +169,12 @@ hr.vertical
 }
 
 .premierePartiePresentation {
-  padding-bottom: 40px;
+  padding: 30px;
+  text-align: center;
+}
+
+.premierePartiePresentation .row {
+  padding-bottom: 30px;
 }
 
 /* Présentation */
@@ -226,6 +236,8 @@ hr.vertical
 #deuxiemePartiePresentation {
 	background-color: #EFEFEF;
   padding-bottom: 20px;
+  padding-right: 10%;
+  padding-left:10%;
 }
 
 #plPourquoi, #plPourQui, #plOuEtQuand, #dlDollar, #dlCoupe, #dlInscription {

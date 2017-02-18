@@ -42,6 +42,13 @@
 	padding-top: 12px;
 }
 
+#kartingImageHeaderAnimation {
+  position: fixed;
+  left: 0px;
+  top: 25px;
+  z-index: 1031;
+}
+
 .partenaires img {
 	display: block;
     margin: auto;

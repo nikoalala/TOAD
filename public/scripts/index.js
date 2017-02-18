@@ -35,8 +35,7 @@ $(document).ready(function() {
       }
 
       //On ajoute le kart
-      document.body.appendChild(kartingImage);
-      kartingImage.style.display = "block";
+      kartingImage.show();
       document.getElementById('headerGrayBarKarting').style.display = "block";
 
       //Menu hors video
@@ -63,7 +62,7 @@ $(document).ready(function() {
 
       //On enleve le kart
       document.getElementById('headerGrayBarKarting').style.display = 'none';
-      kartingImage.style.display = "none";
+      kartingImage.hide();
 
       //Menu video : transparent
       $(".navbar-fixed-top").removeClass("top-nav-collapse");
@@ -109,12 +108,7 @@ $(document).ready(function() {
 
 
   //Gestion de l'animation du karting du header en fonction du scroll 1031
-  var kartingImage = new Image();
-  kartingImage.style.position = "fixed";
-  kartingImage.style.left = "0px";
-  kartingImage.style.top = "25px";
-  kartingImage.style["z-index"] = 1031;
-  kartingImage.src = "/toad/images/header/kart_head.png";
+  var kartingImage = $("#kartingImageHeaderAnimation");
 
   $(window).scroll(function() {
 
@@ -130,17 +124,17 @@ $(document).ready(function() {
     if ((document.documentElement.scrollTop || document.body.scrollTop) < palier1) {
       //Le kart ne doit pas dépasser le menu "Entraine-toi"
       console.log("Palier 1");
-      kartingImage.style.left = (position / windowHeight) * windowWidth + "px";
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier2) {
       //Le kart ne doit pas dépasser le menu "Sponsors"
       console.log("Palier 2");
-      kartingImage.style.left = (position / windowHeight) * windowWidth + +"px";
+      kartingImage.css("left", (position / windowHeight) * windowWidth + +"px");
     } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier3) {
       console.log("Palier 3");
-      kartingImage.style.left = (position / windowHeight) * windowWidth + "px";
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     } else {
       console.log("Palier non defini");
-      kartingImage.style.left = (position / windowHeight) * windowWidth + "px";
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     }
 
 

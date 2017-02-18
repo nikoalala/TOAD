@@ -53,9 +53,9 @@
 }
 
 .laLigneGrise {
-	border-top: 25px solid #777676;
+	background-color: #777676;
+  height: 25px;
 	width: 100%;
-	margin-top : 12px;
 }
 
 #headerGrayBarKarting{
@@ -67,6 +67,7 @@
 }
 
 .laLigneBleuBlanc {
+    margin-top: 25px;
     height: 8px;
     background-image: url(/toad/images/header/bandeBleuBlanche.png);
     background-repeat: repeat-x;

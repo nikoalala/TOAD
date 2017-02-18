@@ -1,28 +1,27 @@
-window.onload = function() {
-    
+var KartingGame = function() {
+
     // Taille du jeu et de la piste
-    var pisteSize = [877, 1240];   
+    var pisteSize = [877, 1240];
 
     var windowSize = getBrowserDimensions();
-    if(windowSize.height > 900) {
-            windowSize.height = 900;
+    if (windowSize.height > 900) {
+        windowSize.height = 900;
     }
 
     // Création du jeu avec les différentes fonctions necessaires.
-    var game = new Phaser.Game(windowSize.width/2, windowSize.height, Phaser.AUTO, 'kartingGameCanvas', {
+    var game = new Phaser.Game(windowSize.width / 2, windowSize.height, Phaser.AUTO, 'kartingGameCanvas', {
         preload: preload,
         create: create,
         update: update,
         render: render
     }, true);
 
-    var karting, piste, currentSpeed = 0;
+    var karting, piste, menuLabel, currentSpeed = 0;
 
     // Préchargement des images
     function preload() {
         game.load.image('piste', '/toad/images/game/piste3.png');
         game.load.image('kart', '/toad/images/game/karting_vert.png');
-
     }
 
     function create() {
@@ -49,6 +48,8 @@ window.onload = function() {
      * Fonction appelée avant chaque frame
      */
     function update() {
+
+
         karting.update();
 
         // La caméra suit le karting, mais la piste reste fixe, 
@@ -61,16 +62,16 @@ window.onload = function() {
         game.debug.text('Vitesse : ' + karting.speed, 32, 32);
 
 
-        if(karting.dateDebut) {
+        if (karting.dateDebut) {
             var time = dateDiff(karting.dateDebut, new Date());
-            game.debug.text('Temps : ' + time.min + ":"+ time.sec, 32, 72);
-        }
-        
-        if(karting.tempsTour) {
-            game.debug.text('Temps au tour : ' + karting.tempsTour.min + ":"+ karting.tempsTour.sec, 32, 92);
+            game.debug.text('Temps : ' + time.min + ":" + time.sec, 32, 72);
         }
 
-        if(karting.checkpointIndex != undefined) {
+        if (karting.tempsTour) {
+            game.debug.text('Temps au tour : ' + karting.tempsTour.min + ":" + karting.tempsTour.sec, 32, 92);
+        }
+
+        if (karting.checkpointIndex != undefined) {
             game.debug.text('Checkpoint : ' + karting.checkpointIndex, 32, 52);
         }
     }
@@ -143,14 +144,14 @@ var CheckCollisionPiste = function() {
 
 
 /**
-* Gestion du changement de traille de la fenêtre
-*/
+ * Gestion du changement de traille de la fenêtre
+ */
 function activateWindowSizeCheck(game) {
-    $( window ).resize(function() {
+    $(window).resize(function() {
         var windowSize = getBrowserDimensions();
-        if(windowSize.height > 900) {
+        if (windowSize.height > 900) {
             windowSize.height = 900;
         }
-        game.scale.setGameSize(windowSize.width/2, (windowSize.height-$("#headerBar").height()));
+        game.scale.setGameSize(windowSize.width / 2, (windowSize.height - $("#headerBar").height()));
     });
 }

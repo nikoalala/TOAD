@@ -3,6 +3,16 @@
 	height: 929px;
 }
 
+.textLaunchGame {
+    color: #00AAE0;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+#kartingGameLaunchImage {
+  cursor: pointer;
+}
+
 .kgTitre {
   color: #7FC249;
 }

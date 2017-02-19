@@ -17,10 +17,68 @@ $(document).ready(function() {
     KartingGame();
   });
 
-  $(window).scroll(function() {
+  jQuery(function($) {
+
+    $('#background-video').YTPlayer({
+      fitToBackground: true,
+      videoId: 'cfX4Z2W6vX8',
+      pauseOnScroll: false,
+      callback: function() {
+        videoCallbackEvents();
+      }
+    });
+
+    var videoCallbackEvents = function() {
+      var player = $('#background-video').data('ytPlayer').player;
+
+      player.addEventListener('onStateChange', function(event) {
+        console.log("Player State Change", event);
+
+        // OnStateChange Data
+        if (event.data === 0) {
+          console.log('video ended');
+        } else if (event.data === 2) {
+          console.log('paused');
+        }
+      });
+      scrollHandler();
+    }
+  });
 
 
 
+  //Gestion de l'animation du karting du header en fonction du scroll
+  var kartingImage = $("#kartingImageHeaderAnimation");
+
+  function scrollKartingHeaderHandler() {
+
+    var palier1 = $("#background-video").height() + $("#ancrePresentation").height();
+    var palier2 = palier1 + $(".kartingGame").height();
+    var palier3 = palier2 + $(".partenaires").height();
+
+    var windowHeight = Math.max($(document).height(), $(window).height()) - getBrowserDimensions().height + $("#headerBar").height();
+    var windowWidth = getBrowserDimensions().width;
+    var position = document.documentElement.scrollTop || document.body.scrollTop;
+
+    //Définition des paliers (chaque element : Presentation, Entraine toi, resultat etc...)
+    if ((document.documentElement.scrollTop || document.body.scrollTop) < palier1) {
+      //Le kart ne doit pas dépasser le menu "Entraine-toi"
+      console.log("Palier 1");
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
+    } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier2) {
+      //Le kart ne doit pas dépasser le menu "Sponsors"
+      console.log("Palier 2");
+      kartingImage.css("left", (position / windowHeight) * windowWidth + +"px");
+    } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier3) {
+      console.log("Palier 3");
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
+    } else {
+      console.log("Palier non defini");
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
+    }
+  }
+
+  function scrollHeaderVideoHandler() {
     if (document.documentElement.scrollTop || document.body.scrollTop + $("#headerBar").height() > $("#background-video").height()) {
       var videoPasse = true;
     } else {
@@ -72,72 +130,14 @@ $(document).ready(function() {
 
       $("#barNavigation").addClass("barNavigation");
       $("#barNavigation").removeClass("barNavigationNoir");
-
     }
-  });
+  }
 
+  function scrollHandler() {
+    scrollHeaderVideoHandler();
+    scrollKartingHeaderHandler();
+  }
+  
 
-
-  jQuery(function($) {
-
-    $('#background-video').YTPlayer({
-      fitToBackground: true,
-      videoId: 'cfX4Z2W6vX8',
-      pauseOnScroll: false,
-      callback: function() {
-        videoCallbackEvents();
-      }
-    });
-
-    var videoCallbackEvents = function() {
-      var player = $('#background-video').data('ytPlayer').player;
-
-      player.addEventListener('onStateChange', function(event) {
-        console.log("Player State Change", event);
-
-        // OnStateChange Data
-        if (event.data === 0) {
-          console.log('video ended');
-        } else if (event.data === 2) {
-          console.log('paused');
-        }
-      });
-    }
-  });
-
-
-
-  //Gestion de l'animation du karting du header en fonction du scroll 1031
-  var kartingImage = $("#kartingImageHeaderAnimation");
-
-  $(window).scroll(function() {
-
-    var palier1 = $("#background-video").height() + $("#ancrePresentation").height();
-    var palier2 = palier1 + $(".kartingGame").height();
-    var palier3 = palier2 + $(".partenaires").height();
-
-    var windowHeight = Math.max($(document).height(), $(window).height()) - getBrowserDimensions().height + $("#headerBar").height();
-    var windowWidth = getBrowserDimensions().width;
-    var position = document.documentElement.scrollTop || document.body.scrollTop;
-
-    //Définition des paliers (chaque element : Presentation, Entraine toi, resultat etc...)
-    if ((document.documentElement.scrollTop || document.body.scrollTop) < palier1) {
-      //Le kart ne doit pas dépasser le menu "Entraine-toi"
-      console.log("Palier 1");
-      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
-    } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier2) {
-      //Le kart ne doit pas dépasser le menu "Sponsors"
-      console.log("Palier 2");
-      kartingImage.css("left", (position / windowHeight) * windowWidth + +"px");
-    } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier3) {
-      console.log("Palier 3");
-      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
-    } else {
-      console.log("Palier non defini");
-      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
-    }
-
-
-
-  });
+  $(window).scroll(scrollHandler);
 });

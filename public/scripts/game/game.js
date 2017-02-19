@@ -22,6 +22,7 @@ var KartingGame = function() {
     function preload() {
         game.load.image('piste', '/toad/images/game/piste3.png');
         game.load.image('kart', '/toad/images/game/karting_vert.png');
+        game.load.image('chrono', '/toad/images/game/icon_chrono.png');
     }
 
     function create() {
@@ -42,6 +43,10 @@ var KartingGame = function() {
         game.camera.focusOnXY(0, 0);
 
         activateWindowSizeCheck(game);
+
+        // Image
+        var chronoLogo = game.add.sprite(32, 15, 'chrono');
+        chronoLogo.fixedToCamera = true;
     }
 
     /**
@@ -59,21 +64,24 @@ var KartingGame = function() {
     }
 
     function render() {
-        game.debug.text('Vitesse : ' + karting.speed, 32, 32);
-
-
+        // Affichage du temps en cours
+        var timeShown = "0:00";
         if (karting.dateDebut) {
             var time = dateDiff(karting.dateDebut, new Date());
-            game.debug.text('Temps : ' + time.min + ":" + time.sec, 32, 72);
+            timeShown = time.min + ":" + time.sec;
         }
+
+        game.debug.text(timeShown, 50, 30);
 
         if (karting.tempsTour) {
-            game.debug.text('Temps au tour : ' + karting.tempsTour.min + ":" + karting.tempsTour.sec, 32, 92);
+            game.debug.text('Dernier temps: ' + karting.tempsTour.min + ":" + karting.tempsTour.sec, 32, 50);
         }
 
-        if (karting.checkpointIndex != undefined) {
-            game.debug.text('Checkpoint : ' + karting.checkpointIndex, 32, 52);
-        }
+        /*if (karting.checkpointIndex != undefined) {
+            game.debug.text('Checkpoint : ' + karting.checkpointIndex, 32, 50);
+        }*/
+
+        //game.debug.text('Vitesse : ' + karting.speed, 32, 92);
     }
 
 };

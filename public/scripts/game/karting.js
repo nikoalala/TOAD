@@ -35,7 +35,11 @@ var Karting = function(game, checkCollisionObj) {
                 this.forceMoteur += 0.0025;
             }
         } else if (cursors.down.isDown) {
-            this.forceMoteur = -0.04;
+            if(this.speed > 0) {
+                this.forceMoteur = -0.04;
+            } else {
+                this.forceMoteur = -0.0025;
+            }
         } else {
             this.forceMoteur = 0.00;
         }

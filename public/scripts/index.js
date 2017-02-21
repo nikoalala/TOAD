@@ -68,7 +68,7 @@ $(document).ready(function() {
     } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier2) {
       //Le kart ne doit pas dépasser le menu "Sponsors"
       console.log("Palier 2");
-      kartingImage.css("left", (position / windowHeight) * windowWidth + +"px");
+      kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier3) {
       console.log("Palier 3");
       kartingImage.css("left", (position / windowHeight) * windowWidth + "px");

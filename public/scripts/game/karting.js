@@ -12,11 +12,11 @@ var Karting = function(game, checkCollisionObj) {
     this.checkpointIndex = 0;
 
     // Création du sprite avec l'image (préchargée), et init de ses valeurs
-    this.sprite = game.add.sprite(550, 914, 'kart');
+    this.sprite = game.add.sprite(863, 330, 'kart');
     this.sprite.anchor.setTo(0.5, 0.5);
     game.physics.arcade.enable(this.sprite);
     this.sprite.body.collideWorldBounds = true;
-
+    this.sprite.angle = -90;
     var cursors = game.input.keyboard.createCursorKeys();
 
     this.update = function() {
@@ -131,7 +131,7 @@ var Karting = function(game, checkCollisionObj) {
     }
 
 
-    var listCheckPoint = [{x1:580, y1:830, x2:580, y2:940}, {x1:225, y1:30, x2:225, y2:130}, {x1:730, y1:545, x2:830, y2:545}];
+    var listCheckPoint = [{x1:837, y1:251, x2:938, y2:251}, {x1:38, y1:570, x2:129, y2:570}, {x1:544, y1:5, x2:544 , y2:100}, {x1:610, y1:610, x2:610 , y2:710}];
     /**
     * Vérifie la position du kart dans le circuit et passe les chckpoint au fur et à mesure.
     * Retourne vrai si le kart passe par la case départ après être passée dans tous les checkpoints (ou la 1ere fois)

@@ -1,7 +1,9 @@
+// Taille du jeu et de la piste
+var pisteSize = [1240, 815];
+
 var KartingGame = function() {
 
-    // Taille du jeu et de la piste
-    var pisteSize = [877, 1240];
+    
 
     var windowSize = getBrowserDimensions();
     if (windowSize.height > 900) {
@@ -15,7 +17,7 @@ var KartingGame = function() {
         update: update,
         render: render
     }, true);
-
+    setGameSize(game);
     var karting, piste, menuLabel, currentSpeed = 0;
 
     // Préchargement des images
@@ -92,8 +94,8 @@ var CheckCollisionPiste = function() {
     // transparancyData[x][y]
     this.transparancyData = [];
     var pisteTransparentSrc = '/toad/images/game/piste2_transparent.png';
-    var width = 877,
-        height = 1240;
+    var width = pisteSize[0],
+        height = pisteSize[1];
     var start = false;
     var context = null;
     var c = document.createElement("canvas");
@@ -155,11 +157,17 @@ var CheckCollisionPiste = function() {
  * Gestion du changement de traille de la fenêtre
  */
 function activateWindowSizeCheck(game) {
-    $(window).resize(function() {
-        var windowSize = getBrowserDimensions();
-        if (windowSize.height > 900) {
-            windowSize.height = 900;
-        }
-        game.scale.setGameSize(windowSize.width / 2, (windowSize.height - ($("#headerBar").height() + $("#headerGrayBarKarting").height())));
-    });
+    function callback() {
+        setGameSize(game);
+    }
+
+    $(window).resize(callback);
+}
+
+function setGameSize(game) {
+    var windowSize = getBrowserDimensions();
+    if (windowSize.height > 900) {
+        windowSize.height = 900;
+    }
+    game.scale.setGameSize(windowSize.width / 2, (windowSize.height - ($("#headerBar").height() + $("#headerGrayBarKarting").height())));
 }

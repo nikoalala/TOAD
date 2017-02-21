@@ -160,6 +160,6 @@ function activateWindowSizeCheck(game) {
         if (windowSize.height > 900) {
             windowSize.height = 900;
         }
-        game.scale.setGameSize(windowSize.width / 2, (windowSize.height - $("#headerBar").height()));
+        game.scale.setGameSize(windowSize.width / 2, (windowSize.height - ($("#headerBar").height() + $("#headerGrayBarKarting").height())));
     });
 }

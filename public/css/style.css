@@ -404,3 +404,15 @@ a:hover{
 .barNavigationNoir a{
 	color : black;
 }
+
+
+
+#blocPresentationQualif {
+  opacity: 0;
+  left:-250px;
+}
+
+#blocPresentationFinale {
+  opacity: 0;
+  right:-250px;
+}

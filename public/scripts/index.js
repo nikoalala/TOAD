@@ -140,4 +140,23 @@ $(document).ready(function() {
   
 
   $(window).scroll(scrollHandler);
+
+
+ new Waypoint({
+    element: document.getElementById('blocPresentationQualif'),
+    handler: function() {
+      console.debug('blocPresentationQualif triggered');
+      $('#blocPresentationQualif').animate({'left':"0", opacity: '1'}, 2000, 'easeOutBounce');
+    }, 
+    offset:"75%"
+  });
+
+ new Waypoint({
+    element: document.getElementById('blocPresentationFinale'),
+    handler: function() {
+      console.debug('blocPresentationFinale triggered');
+      $('#blocPresentationFinale').animate({'right':"0", opacity: '1'}, 2000, 'easeOutBounce');
+    }, 
+    offset:"75%"
+  });
 });

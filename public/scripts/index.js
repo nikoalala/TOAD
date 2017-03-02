@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 
   $("#kartingGameLaunchImage").click(function clickKartingGameLaunchImage() {
-    console.debug("kartingGameLaunchImage click");
+    //console.debug("kartingGameLaunchImage click");
     $("#kartingGameLaunchImage").remove();
 
     $('html, body').animate({
@@ -32,13 +32,13 @@ $(document).ready(function() {
       var player = $('#background-video').data('ytPlayer').player;
 
       player.addEventListener('onStateChange', function(event) {
-        console.log("Player State Change", event);
+        //console.log("Player State Change", event);
 
         // OnStateChange Data
         if (event.data === 0) {
-          console.log('video ended');
+          //console.log('video ended');
         } else if (event.data === 2) {
-          console.log('paused');
+          //console.log('paused');
         }
       });
       scrollHandler();
@@ -63,17 +63,17 @@ $(document).ready(function() {
     //Définition des paliers (chaque element : Presentation, Entraine toi, resultat etc...)
     if ((document.documentElement.scrollTop || document.body.scrollTop) < palier1) {
       //Le kart ne doit pas dépasser le menu "Entraine-toi"
-      console.log("Palier 1");
+      //console.log("Palier 1");
       kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier2) {
       //Le kart ne doit pas dépasser le menu "Sponsors"
-      console.log("Palier 2");
+      //console.log("Palier 2");
       kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     } else if ((document.documentElement.scrollTop || document.body.scrollTop) < palier3) {
-      console.log("Palier 3");
+      //console.log("Palier 3");
       kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     } else {
-      console.log("Palier non defini");
+      //console.log("Palier non defini");
       kartingImage.css("left", (position / windowHeight) * windowWidth + "px");
     }
   }
@@ -145,7 +145,7 @@ $(document).ready(function() {
  new Waypoint({
     element: document.getElementById('blocPresentationQualif'),
     handler: function() {
-      console.debug('blocPresentationQualif triggered');
+      //console.debug('blocPresentationQualif triggered');
       $('#blocPresentationQualif').animate({'left':"0", opacity: '1'}, 2000, 'easeOutBounce');
     }, 
     offset:"75%"
@@ -154,7 +154,7 @@ $(document).ready(function() {
  new Waypoint({
     element: document.getElementById('blocPresentationFinale'),
     handler: function() {
-      console.debug('blocPresentationFinale triggered');
+      //console.debug('blocPresentationFinale triggered');
       $('#blocPresentationFinale').animate({'right':"0", opacity: '1'}, 2000, 'easeOutBounce');
     }, 
     offset:"75%"

@@ -375,6 +375,10 @@ a:hover{
 	background-color : transparent!important;
 }
 
+.footerMap {
+  min-height: 900px;
+}
+
 .ytplayer-shield {
   height: 100%;
   left: 0;

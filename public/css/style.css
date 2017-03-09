@@ -509,6 +509,7 @@ a:hover{
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000px;
+	z-index: 1010;
 }
 /* flip the pane when hovered */
 .flip-containerFlip .flipper {

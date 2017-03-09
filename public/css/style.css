@@ -73,6 +73,9 @@
 	background-color: #777676;
   height: 25px;
 	width: 100%;
+	text-align: center;
+    color: white;
+    font-style: italic;
 }
 
 #headerGrayBarKarting{
@@ -85,11 +88,17 @@
 
 .laLigneBleuBlanc {
     margin-top: 25px;
-    height: 8px;
-    background-image: url(/toad/images/header/bandeBleuBlanche.png);
-    background-repeat: repeat-x;
-
+    height: 17px;
+    background-image: url(/toad/images/header/footerLigneRougeOmbre.png);
+	margin-left: 0px;
+	width: 100%;
 }
+
+.laLigneBleuBlancFooter {
+    height: 17px;
+    background-image: url(/toad/images/header/footerLigneRougeOmbre.png);
+}
+
 
 #barNavigation{
 	margin-left : 15%;
@@ -104,6 +113,7 @@
 
 #resultats .h1green {
   color: #7ec34a;
+  padding-top: 40px;
 }
 
 #resultats .h1gray {
@@ -149,28 +159,13 @@
   height: 100%;
 }
 
-#ancreReglement {
-  background: #7FC249;
-  background: -moz-linear-gradient(-45deg, #7FC249 44%, #0EA8DF 58%);
-  background: -webkit-linear-gradient(-45deg, #7FC249 44%,#0EA8DF 58%);
-  background: linear-gradient(135deg, #7FC249 44%,#0EA8DF 58%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7FC249', endColorstr='#0EA8DF',GradientType=1 );
-  padding-bottom: 40px;
+#ancreReglement .h1green {
+  color: #7ec34a;
+  padding-top: 50px;
 }
 
-.h1white {
-  padding-top: 25px;
-  color: white;
-}
-
-#ancreReglement h1 .h1gray {
+#ancreReglement .h1gray {
   color: #231F20;
-}
-
-#ancreReglement img {
-  -webkit-box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
-  -moz-box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
-  box-shadow: 2px 2px 16px 4px rgba(0,0,0,0.75);
 }
 
 #ancreReglement a {
@@ -183,9 +178,46 @@ hr.vertical
    height: 100%; /* or height in PX */
 } 
 
-.reglement p {
-  font-weight: bold;
-  font-size: 18px;
+.reglementDoc {
+	background-image: url(/toad/images/reglement/imageFondTheRules.png);
+	height: 467px;
+}
+
+.reglementIntro {
+	padding-top: 20px;
+	padding-bottom: 40px;
+	font-size: 20px;
+}
+
+.reglementQuestion {
+	padding-top: 120px;
+	padding-bottom: 5px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#reglementQuestionImg {
+	margin-bottom: 120px;
+}
+
+#reglementQuestionImg:hover {
+    content: url('/toad/images/reglement/boutonMail2.png');
+}
+
+.reglementCafe {
+	background-color: #777676;
+	color: white;
+	font-size: 35px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+#boutonTelechargement {
+  margin-top: 187px;
+}
+
+#boutonTelechargement:hover {
+    content: url('/toad/images/reglement/boutonTelechargement2.png');
 }
 
 .premierePartiePresentation {
@@ -243,6 +275,13 @@ hr.vertical
 
 .titreEtape {
 	color : #00AAE0;
+	font-weight: bold;
+	font-size : 30px;
+	margin-top : -7px;
+}
+
+.titreEtapeVert {
+	color : 7FC249;
 	font-weight: bold;
 	font-size : 30px;
 	margin-top : -7px;
@@ -419,4 +458,46 @@ a:hover{
 #blocPresentationFinale {
   opacity: 0;
   right:-250px;
+}
+
+#decompte {
+  background-color: #EFEFEF;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#decompte .h1green {
+  color: #7ec34a;
+  padding-top: 50px;
+}
+
+#decompte .h1gray {
+  color: #231f20;
+}
+
+.decompteChiffres {
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
+	
+.decompteChiffresCase {
+	color: white;
+	border-radius: 10px;
+	background-color: #B4B4B4;
+	width: 120px;
+	margin: auto;
+}
+
+.decompteChiffres .nombre {
+    font-weight: bold;
+    font-size: 50px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.decompteChiffres .libelle {
+    font-size: 17px;
+    padding-bottom: 10px;
 }

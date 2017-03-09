@@ -7,27 +7,66 @@ div(id="decompte")
 		div.decompteChiffres.col-md-4
 			.row
 				.div.col-md-3
-					div.decompteChiffresCase
-						p 
-							.line.nombre
-								span.decompteJours
-							.line.libelle JOURS
+					.vertical.flip-container(id="decompteJoursFlip")
+						.flipper
+							.front
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteJours0
+										.line.libelle JOURS
+							.back
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteJours1
+										.line.libelle JOURS
+							
 				.div.col-md-3
-					div.decompteChiffresCase
-						p 
-							.line.nombre
-								span.decompteHeures
-							.line.libelle HEURES
+					.vertical.flip-container(id="decompteHeuresFlip")
+						.flipper
+							.front
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteHeures0
+										.line.libelle HEURES
+							.back
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteHeures1
+										.line.libelle HEURES
+							
 				.div.col-md-3
-					div.decompteChiffresCase
-						p 
-							.line.nombre
-								span.decompteMinutes
-							.line.libelle MINUTES
+					.vertical.flip-container(id="decompteMinutesFlip")
+						.flipper
+							.front
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteMinutes0
+										.line.libelle MINUTES
+							.back
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteMinutes1
+										.line.libelle MINUTES
+							
 				.div.col-md-3
-					div.decompteChiffresCase
-						p
-							.line.nombre
-								span.decompteSecondes
-							.line.libelle SECONDES
+					.vertical.flip-container(id="decompteSecondesFlip")
+						.flipper
+							.front
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteSecondes0
+										.line.libelle SECONDES
+							.back
+								div.decompteChiffresCase
+									p
+										.line.nombre
+											span.decompteSecondes1
+										.line.libelle SECONDES
 		div.decompteChiffres.col-md-4
